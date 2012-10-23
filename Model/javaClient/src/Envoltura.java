@@ -1,4 +1,3 @@
-package src;
 import java.io.*;
 import java.net.*;
 import java.util.*;
@@ -7,6 +6,8 @@ import java.util.*;
  * Envoltura SMTP para un mensaje de correo.
  */
 public class Envoltura {
+	
+	public String HostPropio;
     /* Remitente del mensaje SMTP (en este caso, contenido del header From. */
     public String Remitente;
 
@@ -19,24 +20,30 @@ public class Envoltura {
 
     /* El mensaje real */
     public Mensaje Mensaje;
-
+    
+    //LA PASS
+    
+    public String Pass;
+    
     /* Crea la envoltura. */
     public Envoltura(Mensaje mensaje) {
         /* consigue el remitente y el destinatario. */
         Remitente = mensaje.consigaDe();
         Destinatario = mensaje.consigaPara();
+        HostPropio = mensaje.consigaHostPropio();
+        Pass = mensaje.consigaPass();
 
         /* Consigue el mensaje. El mensaje debe ser revisado para asegurarnos 
-           que no hay puntos solitarios sobre una l韓ea. Esto podr韆 arruinar
-           el env韔 del mensaje. */
+           que no hay puntos solitarios sobre una l铆nea. Esto podr铆a arruinar
+           el env铆o del mensaje. */
         Mensaje = revisarMensaje(mensaje);
 
-        /* Busca la parte del nombre del host de la direcci髇 del destinatario. Este debe ser el
+        /* Busca la parte del nombre del host de la direcci贸n del destinatario. Este debe ser el
            nombre del host MX para el dominio del destinatario. */
         int signoArroba = Destinatario.lastIndexOf('@');
         HostDestino = Destinatario.substring(signoArroba + 1);
 
-        /* "Mapea" el nombre de host a la direcci髇 IP */
+        /* "Mapea" el nombre de host a la direcci贸n IP */
         try {
             DireccionDestino = InetAddress.getByName(HostDestino);
         } catch (UnknownHostException e) {
@@ -47,8 +54,8 @@ public class Envoltura {
         return;
     }
 
-    /* Elimina los puntos que queden s髄os en una l韓ea duplicando todos los puntos
-       al comienzo de una l韓ea del mensaje. */
+    /* Elimina los puntos que queden s贸los en una l铆nea duplicando todos los puntos
+       al comienzo de una l铆nea del mensaje. */
     private Mensaje revisarMensaje(Mensaje mensaje) {
         String cuerpoSinPuntoSolo = "";
         String token;
@@ -65,11 +72,11 @@ public class Envoltura {
         return mensaje;
     }
 
-    /* Para imprimir la envoltura. S髄o para depurar. */
+    /* Para imprimir la envoltura. S贸lo para depurar. */
     public String toString() {
         String res = "Remitente: " + Remitente + '\n';
         res += "Destinatario: " + Destinatario + '\n';
-        res += "Host MX: " + HostDestino + ", direcci髇 IP: " + DireccionDestino + 
+        res += "Host MX: " + HostDestino + ", direcci贸n IP: " + DireccionDestino + 
 
 '\n';
         res += "Mensaje:" + '\n';
