@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 
 /**
@@ -27,6 +28,7 @@ public class ClienteDeCorreo extends JFrame {
     private TextField asuntoTextField = new TextField("", 40);
     private Label mensajeLabel = new Label("Mensaje:");
     private TextArea mensajeTextArea = new TextArea(10, 40);
+    
 
     /**
      * Crea una nueva ventana ClienteDeCorreo con los campos para ingresar
@@ -67,6 +69,7 @@ public class ClienteDeCorreo extends JFrame {
         camposPanel.add(dePanel);
         camposPanel.add(paraPanel);
         camposPanel.add(asuntoPanel);
+       
 
         /* Crea un panel para los botones y agrega "listeners" a los
            botones. */
@@ -91,23 +94,34 @@ public class ClienteDeCorreo extends JFrame {
         mail.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
     }
+    
+    static public void build(){
+    	ClienteDeCorreo mail = new ClienteDeCorreo();
+        mail.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
 
     /* Manejador para el botón Enviar. */
     class ListenerEnviar implements ActionListener {
         public void actionPerformed(ActionEvent event) {
-            
+            String st;
 
             /* Primero, revisa que tenga remitente y destinatario. */
             if((deTextField.getText()).equals("")) {
-                System.out.println("¡Necesita remitente!");
+            	 st="¡Necesita remitente!";
+                System.out.println(st);                
+                JOptionPane.showMessageDialog(null,st);
                 return;
             }
             if((paraTextField.getText()).equals("")) {
-                System.out.println("¡Necesita un destinatario!");
+            	st = "¡Necesita un destinatario!";
+                System.out.println(st);
+                JOptionPane.showMessageDialog(null,st);
                 return;
             }
             if((smtpHost.getText()).equals("")) {
-                System.out.println("¡Necesita un Host!");
+            	st = "¡Necesita un Host!";
+                System.out.println(st);
+                JOptionPane.showMessageDialog(null,st);
                 return;
             }
            
@@ -119,15 +133,29 @@ public class ClienteDeCorreo extends JFrame {
             if(!mensajeDeCorreo.esValido()) {
                 return;
             }
-            System.out.println("Enviando correo");
+            st = "Enviando correo";
+            System.out.println(st);
+            JOptionPane.showMessageDialog(null,st);
             /* Crea la envoltura, abre la conexión y trata de enviar el mensaje. */
             Envoltura envoltura = new Envoltura(mensajeDeCorreo);
+            //SendMailTLS.send(envoltura);
             
-            SendMailTLS.send(envoltura);
-            //el resto no lo use es basura
-            //esto no es usa porque es lo que implementa javaMail.
-            //pero deberiamos saber usarlo. sino no hay sentido :P
-            //comentate con un TODO en los metodos que usaste de javamail
+            try {
+            	SendMailTLS.send(envoltura);
+            	st = "¡Mensaje enviado!";
+            	System.out.println(st);
+            	JOptionPane.showMessageDialog(null,st);
+            }catch (RuntimeException e){
+            	System.out.println(" Error de envío, revisar parámentros D:");
+            	JOptionPane.showMessageDialog(null,"Error de envío, revisar parámetros y su conexión...");
+            	st = e.getMessage();
+            	JOptionPane.showMessageDialog(null,st);
+            
+            }
+            //
+            //
+            //
+            //
             //asi cuando nos encontramos los investigamos, o cantamelos que los browseo
             /**try {
                 ConexionSmtp connection = new ConexionSmtp(envoltura);
@@ -137,7 +165,7 @@ public class ClienteDeCorreo extends JFrame {
                 System.out.println("Envío falló: " + error);
                 return;
             }**/
-            System.out.println("¡Mensaje enviado!");
+            //System.out.println("¡Mensaje enviado!");
         }
     }
 
