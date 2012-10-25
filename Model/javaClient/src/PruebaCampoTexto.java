@@ -1,4 +1,6 @@
-// Demostración de la clase JTextField.
+package src;
+
+// Demostracion de la clase JTextField.
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;

@@ -1,3 +1,5 @@
+package src;
+
 import java.io.*;
 import java.net.*;
 import java.awt.*;
@@ -13,7 +15,7 @@ import javax.swing.JPasswordField;
 // edit propio - cambio de superclase Frame a JFrame, permite cerrado  normal de ventana facilmente, con frame no se podia
 public class ClienteDeCorreo extends JFrame {
     /* Los elementos para la interface gráfica. */
-    private Button botonEnviar = new Button("Envíar");
+    private Button botonEnviar = new Button("Enviar");
     private Button botonBorrar = new Button("Borrar");
     private Button botonSalir = new Button("Salir");
     private Label smtpLabel = new Label("smtp server: ");
@@ -43,8 +45,8 @@ public class ClienteDeCorreo extends JFrame {
     public ClienteDeCorreo() {
         super("Java ClienteDeCorreo");
         
-        /* Crea paneles para contener los campos. Para hacerlo más presentable,
-           crea un panel extra para contener todos los páneles hijo. */
+        /* Crea paneles para contener los campos. Para hacerlo mas presentable,
+           crea un panel extra para contener todos los paneles hijo. */
         Panel smtp = new Panel(new BorderLayout());
         Panel pass = new Panel(new BorderLayout());
         Panel dePanel = new Panel(new BorderLayout());
@@ -100,26 +102,26 @@ public class ClienteDeCorreo extends JFrame {
         mail.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    /* Manejador para el botón Enviar. */
+    /* Manejador para el boton Enviar. */
     class ListenerEnviar implements ActionListener {
         public void actionPerformed(ActionEvent event) {
             String st;
 
             /* Primero, revisa que tenga remitente y destinatario. */
             if((deTextField.getText()).equals("")) {
-            	 st="¡Necesita remitente!";
+            	st="�Necesita remitente!";
                 System.out.println(st);                
                 JOptionPane.showMessageDialog(null,st);
                 return;
             }
             if((paraTextField.getText()).equals("")) {
-            	st = "¡Necesita un destinatario!";
+            	st = "�Necesita un destinatario!";
                 System.out.println(st);
                 JOptionPane.showMessageDialog(null,st);
                 return;
             }
             if((smtpHost.getText()).equals("")) {
-            	st = "¡Necesita un Host!";
+            	st = "�Necesita un Host!";
                 System.out.println(st);
                 JOptionPane.showMessageDialog(null,st);
                 return;
@@ -142,12 +144,12 @@ public class ClienteDeCorreo extends JFrame {
             
             try {
             	SendMailTLS.send(envoltura);
-            	st = "¡Mensaje enviado!";
+            	st = "�Mensaje enviado!";
             	System.out.println(st);
             	JOptionPane.showMessageDialog(null,st);
             }catch (RuntimeException e){
-            	System.out.println(" Error de envío, revisar parámentros D:");
-            	JOptionPane.showMessageDialog(null,"Error de envío, revisar parámetros y su conexión...");
+            	System.out.println(" Error de envio, revisar paramentros D:");
+            	JOptionPane.showMessageDialog(null,"Error de envio, revisar parametros y su conexion...");
             	st = e.getMessage();
             	JOptionPane.showMessageDialog(null,st);
             
@@ -162,7 +164,7 @@ public class ClienteDeCorreo extends JFrame {
                 connection.enviar(envoltura);
                 connection.close();
             } catch (IOException error) {
-                System.out.println("Envío falló: " + error);
+                System.out.println("Envio fallo: " + error);
                 return;
             }**/
             //System.out.println("¡Mensaje enviado!");
