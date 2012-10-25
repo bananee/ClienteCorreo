@@ -34,7 +34,7 @@ public class ClienteDeCorreo extends JFrame {
 
     /**
      * Crea una nueva ventana ClienteDeCorreo con los campos para ingresar
-     * la información requerida (De, Para, Asunto, y mensaje).
+     * la informacion requerida (De, Para, Asunto, y mensaje).
      */
     /**
      * 
@@ -138,7 +138,7 @@ public class ClienteDeCorreo extends JFrame {
             st = "Enviando correo";
             System.out.println(st);
             JOptionPane.showMessageDialog(null,st);
-            /* Crea la envoltura, abre la conexión y trata de enviar el mensaje. */
+            /* Crea la envoltura, abre la conexion y trata de enviar el mensaje. */
             Envoltura envoltura = new Envoltura(mensajeDeCorreo);
             //SendMailTLS.send(envoltura);
             
@@ -148,17 +148,13 @@ public class ClienteDeCorreo extends JFrame {
             	System.out.println(st);
             	JOptionPane.showMessageDialog(null,st);
             }catch (RuntimeException e){
-            	System.out.println(" Error de envio, revisar paramentros D:");
+            	System.out.println("Error de envio, revisar paramentros D:");
             	JOptionPane.showMessageDialog(null,"Error de envio, revisar parametros y su conexion...");
             	st = e.getMessage();
             	JOptionPane.showMessageDialog(null,st);
             
             }
-            //
-            //
-            //
-            //
-            //asi cuando nos encontramos los investigamos, o cantamelos que los browseo
+
             /**try {
                 ConexionSmtp connection = new ConexionSmtp(envoltura);
                 connection.enviar(envoltura);
@@ -167,11 +163,11 @@ public class ClienteDeCorreo extends JFrame {
                 System.out.println("Envio fallo: " + error);
                 return;
             }**/
-            //System.out.println("¡Mensaje enviado!");
+            //System.out.println("�Mensaje enviado!");
         }
     }
 
-    /* Borra los campos de la interface gráfica. */
+    /* Borra los campos de la interface grafica. */
     class ListenerBorrar implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             System.out.println("Borrando los campos");
