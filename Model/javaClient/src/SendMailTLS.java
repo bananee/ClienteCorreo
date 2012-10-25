@@ -2,9 +2,6 @@ package src;
 
 import java.util.Properties;
  
-// Mira las librerias aca
-// ok, solo aplicas un sendMailTLS.send(envoltura)???
-// eso hace todo, atras esta todo esto que ves
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;

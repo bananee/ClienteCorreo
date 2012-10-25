@@ -56,8 +56,8 @@ public class Envoltura {
         return;
     }
 
-    /* Elimina los puntos que queden sólos en una línea duplicando todos los puntos
-       al comienzo de una línea del mensaje. */
+    /* Elimina los puntos que queden solos en una linea duplicando todos los puntos
+       al comienzo de una linea del mensaje. */
     private Mensaje revisarMensaje(Mensaje mensaje) {
         String cuerpoSinPuntoSolo = "";
         String token;
@@ -74,7 +74,7 @@ public class Envoltura {
         return mensaje;
     }
 
-    /* Para imprimir la envoltura. Sólo para depurar. */
+    /* Para imprimir la envoltura. Solo para depurar. */
     public String toString() {
         String res = "Remitente: " + Remitente + '\n';
         res += "Destinatario: " + Destinatario + '\n';

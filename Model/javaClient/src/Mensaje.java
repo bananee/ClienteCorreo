@@ -67,26 +67,26 @@ public class Mensaje {
     public String consigaHostPropio(){
     	return smtpHost;
     }
-    /* Revisa si el mensaje es válido. En otras palabra, si el remitente
-       y el destinatario tienen sólo un signo @ */
+    /* Revisa si el mensaje es valido. En otras palabra, si el remitente
+       y el destinatario tienen solo un signo @ */
     public boolean esValido() {
         int arrobaDe = De.indexOf('@');
         int arrobaPara = Para.indexOf('@');
 
         if(arrobaDe < 1 || (De.length() - arrobaDe) <= 1) {
-            System.out.println("La dirección del remitente es inválida");
+            System.out.println("La direccion del remitente es invalida");
             return false;
         }
         if(arrobaPara < 1 || (Para.length() - arrobaPara) <= 1) {
-            System.out.println("La dirección del destinatario es inválida");
+            System.out.println("La direccion del destinatario es invalida");
             return false;
         }
         if(arrobaDe != De.lastIndexOf('@')) {
-            System.out.println("La dirección del Remitente es inválida");
+            System.out.println("La direccion del Remitente es invalida");
             return false;
         }
         if(arrobaPara != Para.lastIndexOf('@')) {
-            System.out.println("La dirección del destinatario es inválida");
+            System.out.println("La direccion del destinatario es invalida");
             return false;
         }       
         return true;

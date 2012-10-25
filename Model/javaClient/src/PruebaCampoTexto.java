@@ -18,23 +18,23 @@ public class PruebaCampoTexto extends JFrame
       Container contenedor = getContentPane();
       contenedor.setLayout( new FlowLayout() );
  
-      // crear campo de texto con tama帽o predeterminado
+      // crear campo de texto con tama駉 predeterminado
       campoTexto1 = new JTextField( 10 );
       contenedor.add( campoTexto1 );
  
       // crear campo de texto con texto predeterminado
-      campoTexto2 = new JTextField( "Escriba el texto aqu铆" );
+      campoTexto2 = new JTextField( "Escriba el texto aqui" );
       contenedor.add( campoTexto2 );
  
       // crear campo de texto con texto predeterminado,
       // 20 elementos visibles y sin manejador de eventos
       campoTexto3 = new JTextField( "Campo de texto no editable", 20 );
       campoTexto3.setEditable( false );
-      campoTexto3.setToolTipText("脡sta mierda no se edita");
+      campoTexto3.setToolTipText("Esta mierda no se edita");
  
       contenedor.add( campoTexto3 );
  
-      // crear campo de contrase帽a con texto predeterminado
+      // crear campo de contrase馻 con texto predeterminado
       campoContrasenia = new JPasswordField( "Texto oculto" );
       contenedor.add( campoContrasenia );
  
@@ -65,19 +65,19 @@ public class PruebaCampoTexto extends JFrame
       {
          String cadena = "";
  
-         // el usuario oprimi贸 Intro en objeto JTextField campoTexto1
+         // el usuario oprimio Intro en objeto JTextField campoTexto1
          if ( evento.getSource() == campoTexto1 )
             cadena = "campoTexto1: " + evento.getActionCommand();
  
-         // el usuario oprimi贸 Intro en objeto JTextField campoTexto2
+         // el usuario oprimio Intro en objeto JTextField campoTexto2
          else if ( evento.getSource() == campoTexto2 )
             cadena = "campoTexto2: " + evento.getActionCommand();
  
-         // el usuario oprimi贸 Intro en objeto JTextField campoTexto3
+         // el usuario oprimio Intro en objeto JTextField campoTexto3
          else if ( evento.getSource() == campoTexto3 )
             cadena = "campoTexto3: " + evento.getActionCommand();
  
-         // el usuario oprimi贸 Intro en objeto JTextField campoContrasenia
+         // el usuario oprimio Intro en objeto JTextField campoContrasenia
          else if ( evento.getSource() == campoContrasenia ) {
             cadena = "campoContrasenia: " + 
                new String( campoContrasenia.getPassword() );
@@ -85,7 +85,7 @@ public class PruebaCampoTexto extends JFrame
  
          JOptionPane.showMessageDialog( null, cadena,"Resultados",JOptionPane.CANCEL_OPTION);
  
-      } // fin del m茅todo actionPerformed
+      } // fin del metodo actionPerformed
  
    } // fin de la clase interna privada ManejadorCampoTexto
  
